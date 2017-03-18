@@ -1,6 +1,6 @@
 # docker-java8-jre
 
-### This is java image based on Alpine Linux and openjdk
+### This is java image based on Alpine Linux and Openjdk
 
 - [Alpine Linux](https://alpinelinux.org)
 
