@@ -2,7 +2,7 @@
 
 ### This is java image based on Alpine Linux and JAVA8 JRE
 
-- [Alpine Linux](https://alpinelinux.org)
+- [Alpine Linux](https://hub.docker.com/_/alpine/)
 
 #### - Update curl
 	$ apk add --update curl
