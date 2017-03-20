@@ -43,3 +43,6 @@
 #### - Set the proper environment variables.
 	ENV JAVA_HOME /opt/jre
 	ENV PATH ${PATH}:${JAVA_HOME}/bin
+
+#### - Usage
+	docker run -it --rm wrlennon/alpine-java8-jre java -version
