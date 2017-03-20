@@ -4,24 +4,24 @@
 
 - [Alpine Linux](https://alpinelinux.org)
 
-#### Update curl
-		$ apk add --update curl
+#### - Update curl
+	$ apk add --update curl
 
-#### Install glibc-2.21 which is a hard dependency of Java 8. and see https://github.com/mesosphere/kubernetes-mesos/issues/801 &&\
-		$ curl -Ls https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.21-r2/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk
-    		apk add --allow-untrusted /tmp/glibc-2.21-r2.apk
+#### - Install glibc-2.21 which is a hard dependency of Java 8. and see https://github.com/mesosphere/kubernetes-mesos/issues/801
+	$ curl -Ls https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.21-r2/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk &&\
+		apk add --allow-untrusted /tmp/glibc-2.21-r2.apk
 
-#### Download the Oracle JRE using tricks in this SO article.
-		$ curl -Ls https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.21-r2/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk &&\
-		    apk add --allow-untrusted /tmp/glibc-2.21-r2.apk &&\
-		    mkdir -p /opt &&\
-		    curl -jkLH "Cookie: oraclelicense=accept-securebackup-cookie" -o java.tar.gz\
-		    http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_URL_ELEMENT}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz &&\
-		    echo "$JAVA_SHA256_SUM  java.tar.gz" | sha256sum -c - &&\
-		    gunzip -c java.tar.gz | tar -xf - -C /opt && rm -f java.tar.gz &&\
+#### - Download the Oracle JRE using tricks in this SO article.
+	$ curl -Ls https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.21-r2/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk &&\
+	    apk add --allow-untrusted /tmp/glibc-2.21-r2.apk &&\
+	    mkdir -p /opt &&\
+	    curl -jkLH "Cookie: oraclelicense=accept-securebackup-cookie" -o java.tar.gz\
+	    http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_URL_ELEMENT}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz &&\
+	    echo "$JAVA_SHA256_SUM  java.tar.gz" | sha256sum -c - &&\
+	    gunzip -c java.tar.gz | tar -xf - -C /opt && rm -f java.tar.gz &&\
 
-#### Remove spurious folders not needed (like jre/lib).
-		$ rm -rf /opt/jre/lib/plugin.jar \
+#### - Remove spurious folders not needed (like jre/lib).
+	$ rm -rf /opt/jre/lib/plugin.jar \
          /opt/jre/lib/ext/jfxrt.jar \
          /opt/jre/bin/javaws \
          /opt/jre/lib/javaws.jar \
@@ -40,6 +40,6 @@
       apk del curl &&\
       rm -rf /var/cache/apk/*
 
-#### Set the proper environment variables.
-		ENV JAVA_HOME /opt/jre
-		ENV PATH ${PATH}:${JAVA_HOME}/bin
+#### - Set the proper environment variables.
+	ENV JAVA_HOME /opt/jre
+	ENV PATH ${PATH}:${JAVA_HOME}/bin
